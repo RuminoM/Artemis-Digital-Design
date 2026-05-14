@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="es">
+<head>
+<!--
+  ARTEMIS DIGITAL DESIGN · CHECKLIST PRE-PUBLICACIÓN
+  ────────────────────────────────────────────────
+  1. Reemplaza <NUMERO_WHATSAPP> en el <script> al final del archivo.
+     Usa formato internacional SIN '+', SIN espacios, SIN guiones.
+     Ejemplo Chile: '56912345678'.   (Busca "WA_NUMBER" — aparece 1 vez.)
+  2. (Opcional) Ajusta og:url y canonical cuando tengas dominio.
+  3. (Opcional) Comprimir logo.png — pesa ~1.4MB. Recomendado: TinyPNG → ~150KB.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="description" content="Artemis Digital Design — Arquitectura digital para líderes del mañana. Landings de alta conversión para inmobiliarias, abogados y crypto-proyectos. Desde Viña del Mar, Chile.">
+<meta name="author" content="Artemis Digital Design">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Artemis Digital Design · Arquitectura digital para líderes del mañana">
+<meta property="og:description" content="Landings de alta conversión para inmobiliarias, abogados y crypto. Desde Viña del Mar, proyectando talento al mundo.">
+<meta property="og:image" content="Artemis-Logo-2048-Black.png">
+<meta property="og:locale" content="es_CL">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Artemis Digital Design">
+<meta name="twitter:description" content="Diseño sofisticado. Resultados tangibles.">
+<meta name="twitter:image" content="Artemis-Logo-2048-Black.png">
+
+<link rel="icon" type="image/png" href="Artemis-Logo-2048-Black.png">
+<link rel="apple-touch-icon" href="Artemis-Logo-2048-Black.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<title>Artemis Digital Design · Arquitectura digital para líderes del mañana</title>
+
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --ink-2:#111111;
+    --white:#FFFFFF;
+    --silver:#E5E5E5;
+    --silver-dim:#8A8A8A;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(229,229,229,.35);
+    --pad:clamp(20px, 4vw, 56px);
+    --radius:2px;
+    --ease:cubic-bezier(.16,.84,.32,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  html, body{ margin:0; padding:0; }
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:"Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  img{ display:block; max-width:100%; height:auto; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
+  input, select, textarea{ font:inherit; color:inherit; background:none; border:none; outline:none; }
+
+  /* ── Utilities ─────────────────────────────────────── */
+  .container{ max-width:1280px; margin:0 auto; padding:0 var(--pad); }
+  .display{ font-family:"Space Grotesk", "Inter", sans-serif; font-weight:600; letter-spacing:-0.01em; line-height:1.05; }
+  .display-hero{ font-family:"Syne", "Space Grotesk", sans-serif; font-weight:700; letter-spacing:-0.025em; line-height:.98; }
+  .silver{ color:var(--silver); }
+  .muted{ color:var(--silver-dim); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:"Inter", sans-serif;
+    font-size:11px; font-weight:500;
+    letter-spacing:.28em; text-transform:uppercase;
+    color:var(--silver-dim);
+  }
+  .eyebrow::before{
+    content:""; display:inline-block;
+    width:24px; height:1px; background:var(--silver);
+  }
+  section{ scroll-margin-top:96px; }
+
+  /* ── Reveal on scroll ──────────────────────────────── */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .9s var(--ease), transform .9s var(--ease); will-change:opacity, transform; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ── Buttons ───────────────────────────────────────── */
+  .btn{
+    display:inline-flex; align-items:center; gap:12px;
+    padding:17px 30px; border-radius:var(--radius);
+    font-family:"Cinzel", "Times New Roman", serif;
+    font-size:13px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase;
+    border:1px solid var(--silver);
+    transition:background .28s ease, color .28s ease, transform .28s var(--ease), box-shadow .28s ease;
+    cursor:pointer; white-space:nowrap;
+  }
+  .btn .arrow{ transition:transform .28s var(--ease); display:inline-block; }
+  .btn:hover .arrow{ transform:translateX(5px); }
+  .btn-silver{ background:var(--silver); color:var(--ink); box-shadow:0 8px 24px -8px rgba(229,229,229,.25); }
+  .btn-silver:hover{ background:transparent; color:var(--silver); transform:translateY(-2px); box-shadow:0 14px 32px -10px rgba(229,229,229,.18); }
+  .btn-ghost{ background:transparent; color:var(--silver); }
+  .btn-ghost:hover{ background:var(--silver); color:var(--ink); transform:translateY(-2px); }
+
+  /* ── Nav ───────────────────────────────────────────── */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,10,10,.78);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:18px;
+  }
+  .brand{ display:inline-flex; align-items:center; gap:12px; }
+  .brand-mark{
+    height:64px; width:auto;
+  }
+  .brand-name{ display:none; }
+  .nav-links{ display:flex; align-items:center; gap:36px; }
+  .nav-links a{
+    font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--silver-dim); transition:color .22s ease;
+  }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-cta{ padding:12px 24px; font-size:12px; }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  .hero{
+    position:relative; isolation:isolate;
+    min-height:58vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding-block:clamp(18px, 2.8vh, 40px);
+    background:
+      radial-gradient(60% 45% at 50% 30%, rgba(229,229,229,.08) 0%, rgba(229,229,229,0) 65%),
+      radial-gradient(100% 80% at 50% 100%, rgba(10,10,10,1) 0%, rgba(10,10,10,.92) 50%, var(--ink) 100%),
+      var(--ink);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background-image:
+      linear-gradient(rgba(229,229,229,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(229,229,229,.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(closest-side at 50% 40%, black, transparent 80%);
+    -webkit-mask-image:radial-gradient(closest-side at 50% 40%, black, transparent 80%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:clamp(10px, 1.5vw, 18px);
+  }
+  .hero-logo-wrap{
+    position:relative;
+    display:inline-block;
+  }
+  .hero-logo{
+    display:block;
+    height:clamp(300px, 48vw, 680px); width:auto;
+    /* Artemis-Logo-2048-White.png is a transparent PNG with pure white letters —
+       renders directly on the dark page, no blend mode or filter needed. */
+    image-rendering:auto;
+    -webkit-user-drag:none;
+    user-select:none;
+    animation:artemisFloat 7s ease-in-out infinite;
+    will-change:transform;
+  }
+  @keyframes artemisFloat{
+    0%, 100%{ transform:translateY(0); }
+    50%    { transform:translateY(-10px); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero-logo{ animation:none; }
+  }
+
+  .hero-title{
+    font-size:clamp(42px, 7.8vw, 104px);
+    line-height:.96; letter-spacing:-0.028em;
+    max-width:20ch; margin:0;
+    text-wrap:balance;
+  }
+  .hero-title em{ font-style:italic; font-weight:500; color:var(--silver); letter-spacing:-0.02em; }
+  .hero-sub{
+    font-size:clamp(15px, 1.4vw, 18px);
+    color:var(--silver-dim); max-width:58ch; margin:0;
+    line-height:1.65;
+  }
+  .hero-ctas{ display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
+
+  /* ── Sections ──────────────────────────────────────── */
+  .section{ padding:clamp(80px, 12vh, 140px) 0; }
+  .section-head{ display:flex; flex-direction:column; gap:16px; margin-bottom:clamp(40px, 6vh, 64px); }
+  .section-head h2{
+    font-size:clamp(34px, 5.2vw, 68px);
+    margin:0; max-width:22ch;
+    text-wrap:balance;
+  }
+
+  /* ── Niches ────────────────────────────────────────── */
+  .niches-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
+  }
+  .niche-card{
+    position:relative;
+    padding:clamp(28px, 3vw, 40px);
+    background:linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+    border:1px solid var(--line);
+    transition:border-color .35s ease, transform .45s var(--ease), box-shadow .45s ease;
+    display:flex; flex-direction:column; min-height:340px;
+  }
+  .niche-card::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(120% 80% at 50% 0%, rgba(229,229,229,.06), transparent 60%);
+    opacity:0; transition:opacity .45s ease;
+  }
+  .niche-card:hover{
+    border-color:var(--silver);
+    transform:translateY(-4px);
+    box-shadow:0 24px 48px -24px rgba(0,0,0,.6), inset 0 0 0 1px rgba(229,229,229,.10);
+  }
+  .niche-card:hover::after{ opacity:1; }
+  .niche-icon{
+    width:74px; height:74px;
+    align-self:center;
+    margin:6px 0 22px;
+    color:var(--silver);
+    transition:transform .5s var(--ease);
+  }
+  .niche-card:hover .niche-icon{ transform:translateY(-2px) scale(1.04); }
+  .niche-card h3{
+    font-family:"Space Grotesk", sans-serif;
+    font-size:clamp(22px, 2.4vw, 28px);
+    font-weight:600;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .niche-card p{
+    color:var(--silver-dim);
+    font-size:15px; line-height:1.65;
+    margin:0; flex:1;
+  }
+  .niche-card .niche-foot{
+    margin-top:22px; padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--silver-dim);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    transition:color .28s ease, border-color .28s ease;
+  }
+  .niche-card:hover .niche-foot{ color:var(--silver); border-color:rgba(229,229,229,.25); }
+
+  /* ── Vitrina (portfolio carousel) ──────────────────── */
+  .vitrina{
+    border-top:1px solid var(--line);
+    padding-bottom:clamp(96px, 14vh, 160px);
+    overflow:hidden;
+  }
+  .vitrina-head{
+    text-align:center; align-items:center;
+    max-width:760px; margin-left:auto; margin-right:auto;
+  }
+  .vitrina-head h2{ max-width:18ch; }
+  .vitrina-lead{
+    color:var(--silver-dim);
+    font-size:clamp(15px, 1.35vw, 17px);
+    line-height:1.7;
+    margin:0;
+    max-width:54ch;
+  }
+
+  .vitrina-marquee{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    padding-block:8px;
+    mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .vitrina-track{
+    display:flex;
+    width:max-content;
+    animation:vitrinaScroll 48s linear infinite;
+    will-change:transform;
+  }
+  .vitrina-marquee:hover .vitrina-track{ animation-play-state:paused; }
+  @keyframes vitrinaScroll{
+    0%   { transform:translateX(0); }
+    100% { transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .vitrina-track{ animation:none; }
+  }
+
+  .work-card{
+    flex:0 0 auto;
+    width:clamp(280px, 32vw, 420px);
+    aspect-ratio:4/3;
+    margin-right:18px;
+    position:relative; overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:clamp(20px, 2.2vw, 28px);
+    transition:border-color .35s ease, transform .4s var(--ease), box-shadow .4s ease;
+    isolation:isolate;
+  }
+  .work-card:hover{
+    border-color:var(--silver);
+    transform:translateY(-4px);
+    box-shadow:0 24px 48px -24px rgba(0,0,0,.7);
+  }
+  .work-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+  .work-logo{ height:28px; width:auto; opacity:.9; }
+  .work-num{
+    font-family:"Cinzel", serif; font-weight:600;
+    font-size:clamp(14px, 1.2vw, 16px);
+    letter-spacing:.24em;
+    opacity:.55;
+  }
+  .work-body h4{
+    font-family:"Space Grotesk", sans-serif; font-weight:600;
+    font-size:clamp(18px, 1.6vw, 22px);
+    margin:0 0 6px;
+    letter-spacing:-0.005em;
+    line-height:1.2;
+  }
+  .work-tag{
+    font-size:11px; font-weight:500;
+    letter-spacing:.22em; text-transform:uppercase;
+    opacity:.65;
+  }
+  .work-overlay{
+    position:absolute; inset:0; pointer-events:none; z-index:-1;
+  }
+
+  /* Variants */
+  .v-dark{ background:linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%); color:var(--white); }
+  .v-dark .work-overlay{ background:radial-gradient(70% 50% at 100% 0%, rgba(229,229,229,.10), transparent 60%); }
+
+  .v-silver{ background:linear-gradient(135deg, #EDEDED 0%, #B8B8B8 100%); color:var(--ink); }
+  .v-silver .work-tag{ opacity:.7; }
+
+  .v-shadow{ background:radial-gradient(120% 80% at 50% 0%, #1B1B1B 0%, #060606 70%); color:var(--white); }
+  .v-shadow .work-overlay{
+    background-image:
+      linear-gradient(rgba(229,229,229,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(229,229,229,.04) 1px, transparent 1px);
+    background-size:32px 32px;
+    mask-image:radial-gradient(closest-side at 50% 50%, black, transparent 75%);
+    -webkit-mask-image:radial-gradient(closest-side at 50% 50%, black, transparent 75%);
+  }
+
+  .v-cream{ background:linear-gradient(135deg, #F1EFE9 0%, #D4D1C7 100%); color:#0A0A0A; }
+
+  .v-grid{ background:#0A0A0A; color:var(--white); }
+  .v-grid .work-overlay{
+    background-image:
+      linear-gradient(rgba(229,229,229,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(229,229,229,.07) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  .v-split{
+    background:linear-gradient(180deg, #E5E5E5 0%, #E5E5E5 48%, #0A0A0A 52%, #0A0A0A 100%);
+    color:var(--ink);
+  }
+  .v-split .work-body{ color:var(--white); }
+  .v-split .work-body h4, .v-split .work-tag{ color:var(--white); }
+
+  /* Live iframe preview cards (real client work) */
+  .work-card-live{
+    background:#0A0A0A;
+    color:var(--white);
+    text-decoration:none;
+    cursor:pointer;
+  }
+  .work-frame{
+    position:absolute; inset:0;
+    overflow:hidden;
+    z-index:0;
+    background:#0A0A0A;
+  }
+  .work-frame iframe{
+    position:absolute; top:0; left:0;
+    width:400%; height:400%;
+    border:0;
+    transform:scale(.25);
+    transform-origin:top left;
+    pointer-events:none;
+    background:#0A0A0A;
+  }
+  .work-card-live::after{
+    content:"";
+    position:absolute; inset:0;
+    z-index:1; pointer-events:none;
+    background:linear-gradient(
+      180deg,
+      rgba(10,10,10,.55) 0%,
+      rgba(10,10,10,0) 25%,
+      rgba(10,10,10,0) 58%,
+      rgba(10,10,10,.92) 100%
+    );
+    transition:background .35s ease;
+  }
+  .work-card-live:hover::after{
+    background:linear-gradient(
+      180deg,
+      rgba(10,10,10,.35) 0%,
+      rgba(10,10,10,0) 25%,
+      rgba(10,10,10,0) 58%,
+      rgba(10,10,10,.82) 100%
+    );
+  }
+  .work-card-live .work-head,
+  .work-card-live .work-body{ position:relative; z-index:2; }
+  .work-card-live .work-logo{
+    background:rgba(10,10,10,.7);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    padding:6px 8px; border-radius:2px;
+  }
+  .work-card-live .work-ext{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:10px; font-weight:500;
+    letter-spacing:.24em; text-transform:uppercase;
+    color:var(--silver);
+    background:rgba(10,10,10,.7);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    padding:6px 10px; border-radius:2px;
+    border:1px solid rgba(229,229,229,.18);
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .work-card-live:hover .work-ext{
+    background:var(--silver); color:var(--ink); border-color:var(--silver);
+  }
+  @media (prefers-reduced-motion:reduce){
+    .work-frame iframe{ display:none; }
+    .work-card-live{ background:linear-gradient(135deg, #1A1A1A, #0A0A0A); }
+  }
+
+  /* ── Contact ───────────────────────────────────────── */
+  .contact{ text-align:center; }
+  .tagline{
+    font-size:clamp(36px, 5.8vw, 72px);
+    margin:0 auto 18px;
+    max-width:18ch;
+    text-wrap:balance;
+  }
+  .contact-lead{
+    color:var(--silver-dim);
+    max-width:54ch; margin:0 auto clamp(36px, 5vh, 56px);
+    font-size:16px;
+  }
+  .lead-form{
+    display:grid; gap:22px;
+    max-width:520px; margin:0 auto;
+    text-align:left;
+  }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{
+    font-size:11px; font-weight:500;
+    letter-spacing:.28em; text-transform:uppercase;
+    color:var(--silver-dim);
+  }
+  .field input, .field select{
+    color:var(--white);
+    border-bottom:1px solid var(--silver-dim);
+    padding:14px 0;
+    font-size:16px;
+    width:100%;
+    transition:border-color .25s ease;
+    border-radius:0;
+  }
+  .field select{
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--silver) 50%),
+      linear-gradient(135deg, var(--silver) 50%, transparent 50%);
+    background-position:
+      calc(100% - 14px) 22px,
+      calc(100% - 8px) 22px;
+    background-size:6px 6px;
+    background-repeat:no-repeat;
+    padding-right:28px;
+    cursor:pointer;
+  }
+  .field select option{ background:var(--ink); color:var(--white); }
+  .field input:focus, .field select:focus{ border-color:var(--silver); }
+  .field input::placeholder{ color:rgba(138,138,138,.6); }
+
+  .form-foot{
+    display:flex; flex-direction:column; gap:14px; margin-top:8px;
+  }
+  .form-help{ font-size:12px; color:var(--silver-dim); margin:0; }
+  .lead-form .btn{ width:100%; justify-content:center; }
+
+  .location-line{
+    margin:clamp(48px, 7vh, 72px) auto 0;
+    font-family:"Space Grotesk", sans-serif;
+    font-size:13px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--silver-dim);
+    max-width:48ch;
+  }
+  .location-line .pulse{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--silver); margin-right:10px; vertical-align:middle;
+    box-shadow:0 0 12px rgba(229,229,229,.6);
+    animation:pulseDot 2.4s ease-in-out infinite;
+  }
+  @keyframes pulseDot{
+    0%, 100%{ opacity:.4; transform:scale(.85); }
+    50%   { opacity:1;  transform:scale(1.15); }
+  }
+  @media (prefers-reduced-motion:reduce){ .location-line .pulse{ animation:none; } }
+
+  /* ── Footer ────────────────────────────────────────── */
+  .foot{
+    border-top:1px solid var(--line);
+    padding:28px 0 36px;
+  }
+  .foot-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-family:"Space Grotesk", sans-serif;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--silver-dim);
+  }
+
+  /* ── Cursor ring (pointer:fine only) ───────────────── */
+  .cursor-dot{
+    position:fixed; top:0; left:0;
+    width:14px; height:14px;
+    border:1px solid var(--silver);
+    border-radius:50%;
+    pointer-events:none;
+    mix-blend-mode:difference;
+    transform:translate(-100px, -100px);
+    transition:width .25s var(--ease), height .25s var(--ease), border-color .2s ease;
+    z-index:90;
+  }
+  @media (pointer:coarse){ .cursor-dot{ display:none !important; } }
+
+  /* ── Responsive ────────────────────────────────────── */
+  @media (max-width:980px){
+    .niches-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:780px){
+    :root{ --pad:24px; }
+    .nav-links{ display:none; }
+    .niches-grid{ grid-template-columns:1fr; }
+    .hero{ min-height:88vh; }
+    .hero-title{ font-size:clamp(36px, 9vw, 56px); max-width:16ch; }
+  }
+  @media (max-width:480px){
+    :root{ --pad:18px; }
+    .brand-name{ display:none; }
+    .nav-cta{ padding:11px 16px; }
+    .hero-ctas .btn{ width:100%; justify-content:center; }
+    .btn{ padding:16px 22px; font-size:12px; }
+    .section{ padding:72px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────────── NAV ───────────── -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand" aria-label="Artemis Digital Design — Inicio">
+      <img class="brand-mark" src="Artemis-Logo-2048-White.png" alt="Artemis Digital Design" width="2048" height="2048" decoding="async">
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#metodo">Método</a>
+      <a href="#vitrina">Vitrina</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn btn-silver nav-cta">Hablemos</a>
+  </div>
+</header>
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="hero-logo-wrap">
+      <img class="hero-logo" src="Artemis-Logo-2048-White.png" alt="Artemis Digital Design" width="2048" height="2048" decoding="async" fetchpriority="high">
+    </div>
+    <h1 class="display-hero hero-title">
+      Arquitectura digital <em>a medida</em><br>
+      para tu empresa.
+    </h1>
+    <p class="hero-sub">
+      Diseñamos landings a medida para profesionales, emprendedores y empresas
+      que quieren destacar. Estrategia, estética y resultados.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn btn-silver">Inicia tu Transformación</a>
+      <a href="#vitrina" class="btn btn-ghost">Ver Trabajos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── MÉTODO ───────────── -->
+<section class="section" id="metodo">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">— Método</span>
+      <h2 class="display">Para cualquier negocio. <span class="silver">A medida siempre.</span></h2>
+    </div>
+
+    <div class="niches-grid">
+
+      <article class="niche-card reveal" style="transition-delay:0ms">
+        <svg class="niche-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="28" cy="28" r="20"/>
+          <circle cx="28" cy="28" r="12"/>
+          <circle cx="28" cy="28" r="4" fill="currentColor"/>
+          <path d="M28 4 V12"/>
+          <path d="M28 44 V52"/>
+          <path d="M4 28 H12"/>
+          <path d="M44 28 H52"/>
+        </svg>
+        <h3>Estrategia</h3>
+        <p>Entendemos tu negocio antes de diseñar. Investigamos tu audiencia, tu competencia y tus objetivos para construir una propuesta que convierte — no solo decora.</p>
+        <div class="niche-foot"><span>Investigación</span><span>→</span></div>
+      </article>
+
+      <article class="niche-card reveal" style="transition-delay:120ms">
+        <svg class="niche-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 14 H46"/>
+          <path d="M14 14 V42 H42 V14"/>
+          <path d="M22 22 H34"/>
+          <path d="M22 30 H34"/>
+          <path d="M22 38 H28"/>
+          <circle cx="28" cy="14" r="3" fill="currentColor"/>
+        </svg>
+        <h3>Diseño a Medida</h3>
+        <p>Cero templates, cero atajos. Cada landing nace desde tu identidad: tipografía, color y jerarquía pensados para tu marca y tu cliente ideal.</p>
+        <div class="niche-foot"><span>Sin templates</span><span>→</span></div>
+      </article>
+
+      <article class="niche-card reveal" style="transition-delay:240ms">
+        <svg class="niche-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 44 L20 32 L28 38 L40 22 L48 28"/>
+          <path d="M40 22 H48 V30"/>
+          <path d="M8 48 H48"/>
+        </svg>
+        <h3>Conversión</h3>
+        <p>Cada elemento tiene un propósito: copy persuasivo, CTAs claros y velocidad optimizada. Resultados medibles — no solo páginas bonitas.</p>
+        <div class="niche-foot"><span>Resultados</span><span>→</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── VITRINA (Portfolio carousel) ───────────── -->
+<section class="section vitrina" id="vitrina">
+  <div class="container">
+    <div class="section-head vitrina-head reveal">
+      <span class="eyebrow">— Vitrina</span>
+      <h2 class="display">Diseño <span class="silver">en producción.</span></h2>
+      <p class="vitrina-lead">Algunos de los proyectos que hemos construido para clientes en distintas industrias.</p>
+    </div>
+  </div>
+
+  <div class="vitrina-marquee reveal" aria-label="Carrusel de proyectos">
+    <div class="vitrina-track">
+
+      <!-- Set 1 (6 cards) -->
+      <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-label="Abrir landing de GETRAC en una pestaña nueva">
+        <div class="work-frame">
+          <iframe src="vitrina/getrac/index.html" title="GETRAC Logística — preview" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+        </div>
+        <div class="work-body">
+          <h4>GETRAC Logística</h4>
+          <span class="work-tag">Logística · Transporte de carga</span>
+        </div>
+      </a>
+
+      <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-label="Abrir landing de Promo Wash en una pestaña nueva">
+        <div class="work-frame">
+          <iframe src="vitrina/promowash.html" title="Promo Wash — preview" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+        </div>
+        <div class="work-body">
+          <h4>Promo Wash</h4>
+          <span class="work-tag">Detailing · Servicios automotrices</span>
+        </div>
+      </a>
+
+      <article class="work-card v-shadow">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-num">03</span>
+        </div>
+        <div class="work-body">
+          <h4>Vásquez &amp; Asociados</h4>
+          <span class="work-tag">Estudio Jurídico</span>
+        </div>
+        <div class="work-overlay"></div>
+      </article>
+
+      <article class="work-card v-cream">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+          <span class="work-num">04</span>
+        </div>
+        <div class="work-body">
+          <h4>Atelier 21</h4>
+          <span class="work-tag">E-commerce · Lifestyle</span>
+        </div>
+      </article>
+
+      <article class="work-card v-grid">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-num">05</span>
+        </div>
+        <div class="work-body">
+          <h4>NovaCoin Exchange</h4>
+          <span class="work-tag">Web3 · DEX</span>
+        </div>
+        <div class="work-overlay"></div>
+      </article>
+
+      <article class="work-card v-split">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+          <span class="work-num">06</span>
+        </div>
+        <div class="work-body">
+          <h4>Grupo Andes Consultores</h4>
+          <span class="work-tag">B2B · Estrategia</span>
+        </div>
+      </article>
+
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <div class="work-frame">
+          <iframe src="vitrina/getrac/index.html" title="" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+        </div>
+        <div class="work-body">
+          <h4>GETRAC Logística</h4>
+          <span class="work-tag">Logística · Transporte de carga</span>
+        </div>
+      </a>
+
+      <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+        <div class="work-frame">
+          <iframe src="vitrina/promowash.html" title="" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+        </div>
+        <div class="work-body">
+          <h4>Promo Wash</h4>
+          <span class="work-tag">Detailing · Servicios automotrices</span>
+        </div>
+      </a>
+
+      <article class="work-card v-shadow" aria-hidden="true">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-num">03</span>
+        </div>
+        <div class="work-body">
+          <h4>Vásquez &amp; Asociados</h4>
+          <span class="work-tag">Estudio Jurídico</span>
+        </div>
+        <div class="work-overlay"></div>
+      </article>
+
+      <article class="work-card v-cream" aria-hidden="true">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+          <span class="work-num">04</span>
+        </div>
+        <div class="work-body">
+          <h4>Atelier 21</h4>
+          <span class="work-tag">E-commerce · Lifestyle</span>
+        </div>
+      </article>
+
+      <article class="work-card v-grid" aria-hidden="true">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+          <span class="work-num">05</span>
+        </div>
+        <div class="work-body">
+          <h4>NovaCoin Exchange</h4>
+          <span class="work-tag">Web3 · DEX</span>
+        </div>
+        <div class="work-overlay"></div>
+      </article>
+
+      <article class="work-card v-split" aria-hidden="true">
+        <div class="work-head">
+          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+          <span class="work-num">06</span>
+        </div>
+        <div class="work-body">
+          <h4>Grupo Andes Consultores</h4>
+          <span class="work-tag">B2B · Estrategia</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CONTACT ───────────── -->
+<section class="section contact" id="contacto">
+  <div class="container">
+    <span class="eyebrow reveal" style="display:block; margin-bottom:18px;">— Contacto</span>
+    <h2 class="display tagline reveal">Diseño sofisticado.<br><span class="silver">Resultados tangibles.</span></h2>
+    <p class="contact-lead reveal">
+      Cuéntanos brevemente sobre tu proyecto. Te respondemos por WhatsApp con un
+      diagnóstico inicial y propuesta de siguiente paso.
+    </p>
+
+    <form id="lead-form" class="lead-form reveal" novalidate>
+      <div class="field">
+        <label for="f-nombre">Nombre</label>
+        <input id="f-nombre" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre completo">
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com">
+      </div>
+      <div class="field">
+        <label for="f-nicho">Tipo de Negocio</label>
+        <select id="f-nicho" name="nicho" required>
+          <option value="" disabled selected>Cuéntanos a qué te dedicas</option>
+          <option value="Profesional / Consultor">Profesional / Consultor</option>
+          <option value="Servicios">Servicios</option>
+          <option value="Inmobiliaria / Construcción">Inmobiliaria / Construcción</option>
+          <option value="E-commerce / Retail">E-commerce / Retail</option>
+          <option value="Tecnología / Crypto / Web3">Tecnología / Crypto / Web3</option>
+          <option value="Emprendimiento / Startup">Emprendimiento / Startup</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-foot">
+        <button type="submit" class="btn btn-silver">Enviar a WhatsApp</button>
+        <p class="form-help">Te redirige a WhatsApp con tu mensaje pre-armado.</p>
+      </div>
+    </form>
+
+    <p class="location-line reveal">
+      <span class="pulse" aria-hidden="true"></span>
+      Desde Viña del Mar, proyectando talento al mundo.
+    </p>
+  </div>
+</section>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer class="foot">
+  <div class="container foot-row">
+    <span>© 2026 Artemis Digital Design</span>
+    <span>Viña del Mar · Chile</span>
+  </div>
+</footer>
+
+<script>
+  /* ── 1. Reveal on scroll ────────────────────────────── */
+  (() => {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  /* ── 2. Form → WhatsApp ─────────────────────────────── */
+  (() => {
+    const WA_NUMBER = '<NUMERO_WHATSAPP>'; // ← REEMPLAZAR. Ej: '56912345678' (Chile, sin '+', sin espacios).
+    const form = document.getElementById('lead-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      if (!form.checkValidity()){ form.reportValidity(); return; }
+
+      const data = new FormData(form);
+      const nombre = (data.get('nombre') || '').toString().trim();
+      const email  = (data.get('email')  || '').toString().trim();
+      const nicho  = (data.get('nicho')  || '').toString().trim();
+
+      const msg =
+        `Hola Artemis, soy ${nombre}.\n` +
+        `Email: ${email}\n` +
+        `Tipo de negocio: ${nicho}\n\n` +
+        `Me gustaría conversar sobre una landing a medida.`;
+
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  })();
+
+  /* ── 3. Cursor ring (desktop only) ──────────────────── */
+  (() => {
+    if (!window.matchMedia('(pointer:fine)').matches) return;
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(dot);
+
+    let x = -100, y = -100, rx = -100, ry = -100;
+    window.addEventListener('mousemove', (e) => { x = e.clientX; y = e.clientY; }, { passive:true });
+
+    const loop = () => {
+      rx += (x - rx) * 0.22;
+      ry += (y - ry) * 0.22;
+      dot.style.transform = `translate(${rx - 7}px, ${ry - 7}px)`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+
+    const hoverables = document.querySelectorAll('a, button, input, select, .niche-card');
+    hoverables.forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.style.width = '32px'; dot.style.height = '32px'; });
+      el.addEventListener('mouseleave', () => { dot.style.width = '14px'; dot.style.height = '14px'; });
+    });
+  })();
+</script>
+
+</body>
+</html>

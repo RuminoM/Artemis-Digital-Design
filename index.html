@@ -280,27 +280,56 @@
     max-width:54ch;
   }
 
-  .vitrina-marquee{
+  .vitrina-wrap{ position:relative; }
+  .vitrina-scroller{
     position:relative;
     width:100%;
-    overflow:hidden;
+    overflow-x:auto;
+    overflow-y:hidden;
     padding-block:8px;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    scrollbar-width:none;            /* Firefox */
+    -ms-overflow-style:none;          /* IE/Edge */
     mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
   }
+  .vitrina-scroller::-webkit-scrollbar{ display:none; }  /* Chrome/Safari */
   .vitrina-track{
     display:flex;
     width:max-content;
-    animation:vitrinaScroll 48s linear infinite;
-    will-change:transform;
+    padding-inline:var(--pad);
   }
-  .vitrina-marquee:hover .vitrina-track{ animation-play-state:paused; }
-  @keyframes vitrinaScroll{
-    0%   { transform:translateX(0); }
-    100% { transform:translateX(-50%); }
+
+  /* Navigation arrows */
+  .vitrina-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    z-index:5;
+    width:52px; height:52px;
+    border-radius:50%;
+    background:rgba(10,10,10,.78);
+    border:1px solid rgba(229,229,229,.35);
+    color:var(--silver);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s var(--ease), opacity .25s ease;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
   }
-  @media (prefers-reduced-motion:reduce){
-    .vitrina-track{ animation:none; }
+  .vitrina-nav svg{ width:18px; height:18px; display:block; }
+  .vitrina-nav:hover{
+    background:var(--silver); color:var(--ink); border-color:var(--silver);
+    transform:translateY(-50%) scale(1.06);
+  }
+  .vitrina-nav:disabled{
+    opacity:.35; cursor:not-allowed;
+    transform:translateY(-50%);
+    background:rgba(10,10,10,.5);
+  }
+  .vitrina-nav-prev{ left:clamp(8px, 1.5vw, 24px); }
+  .vitrina-nav-next{ right:clamp(8px, 1.5vw, 24px); }
+  @media (max-width:540px){
+    .vitrina-nav{ width:44px; height:44px; }
   }
 
   .work-card{
@@ -308,6 +337,7 @@
     width:clamp(280px, 32vw, 420px);
     aspect-ratio:4/3;
     margin-right:18px;
+    scroll-snap-align:start;
     position:relative; overflow:hidden;
     border:1px solid var(--line);
     border-radius:var(--radius);
@@ -676,159 +706,96 @@
     </div>
   </div>
 
-  <div class="vitrina-marquee reveal" aria-label="Carrusel de proyectos">
-    <div class="vitrina-track">
+  <div class="vitrina-wrap reveal">
+    <button class="vitrina-nav vitrina-nav-prev" type="button" aria-label="Proyecto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button class="vitrina-nav vitrina-nav-next" type="button" aria-label="Proyecto siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 6l6 6-6 6"/>
+      </svg>
+    </button>
 
-      <!-- Set 1 (6 cards) -->
-      <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-label="Abrir landing de GETRAC en una pestaña nueva">
-        <div class="work-frame">
-          <iframe src="vitrina/getrac/index.html" title="GETRAC Logística — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="work-body">
-          <h4>GETRAC Logística</h4>
-          <span class="work-tag">Logística · Transporte de carga</span>
-        </div>
-      </a>
+    <div class="vitrina-scroller" aria-label="Carrusel de proyectos">
+      <div class="vitrina-track">
 
-      <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-label="Abrir landing de Promo Wash en una pestaña nueva">
-        <div class="work-frame">
-          <iframe src="vitrina/promowash.html" title="Promo Wash — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="work-body">
-          <h4>Promo Wash</h4>
-          <span class="work-tag">Detailing · Servicios automotrices</span>
-        </div>
-      </a>
+        <a class="work-card work-card-live" href="https://www.getrac.cl/" target="_blank" rel="noopener" aria-label="Abrir sitio oficial de GETRAC en una pestaña nueva">
+          <div class="work-frame">
+            <iframe src="vitrina/getrac/index.html" title="GETRAC Logística — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+            <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="work-body">
+            <h4>GETRAC Logística</h4>
+            <span class="work-tag">Logística · Transporte de carga</span>
+          </div>
+        </a>
 
-      <article class="work-card v-shadow">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-num">03</span>
-        </div>
-        <div class="work-body">
-          <h4>Vásquez &amp; Asociados</h4>
-          <span class="work-tag">Estudio Jurídico</span>
-        </div>
-        <div class="work-overlay"></div>
-      </article>
+        <a class="work-card work-card-live" href="https://www.promowash.cl/" target="_blank" rel="noopener" aria-label="Abrir sitio oficial de Promo Wash en una pestaña nueva">
+          <div class="work-frame">
+            <iframe src="vitrina/promowash.html" title="Promo Wash — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+            <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="work-body">
+            <h4>Promo Wash</h4>
+            <span class="work-tag">Detailing · Servicios automotrices</span>
+          </div>
+        </a>
 
-      <article class="work-card v-cream">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
-          <span class="work-num">04</span>
-        </div>
-        <div class="work-body">
-          <h4>Atelier 21</h4>
-          <span class="work-tag">E-commerce · Lifestyle</span>
-        </div>
-      </article>
+        <article class="work-card v-shadow">
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+            <span class="work-num">03</span>
+          </div>
+          <div class="work-body">
+            <h4>Vásquez &amp; Asociados</h4>
+            <span class="work-tag">Estudio Jurídico</span>
+          </div>
+          <div class="work-overlay"></div>
+        </article>
 
-      <article class="work-card v-grid">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-num">05</span>
-        </div>
-        <div class="work-body">
-          <h4>NovaCoin Exchange</h4>
-          <span class="work-tag">Web3 · DEX</span>
-        </div>
-        <div class="work-overlay"></div>
-      </article>
+        <article class="work-card v-cream">
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+            <span class="work-num">04</span>
+          </div>
+          <div class="work-body">
+            <h4>Atelier 21</h4>
+            <span class="work-tag">E-commerce · Lifestyle</span>
+          </div>
+        </article>
 
-      <article class="work-card v-split">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
-          <span class="work-num">06</span>
-        </div>
-        <div class="work-body">
-          <h4>Grupo Andes Consultores</h4>
-          <span class="work-tag">B2B · Estrategia</span>
-        </div>
-      </article>
+        <article class="work-card v-grid">
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
+            <span class="work-num">05</span>
+          </div>
+          <div class="work-body">
+            <h4>NovaCoin Exchange</h4>
+            <span class="work-tag">Web3 · DEX</span>
+          </div>
+          <div class="work-overlay"></div>
+        </article>
 
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-        <div class="work-frame">
-          <iframe src="vitrina/getrac/index.html" title="" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="work-body">
-          <h4>GETRAC Logística</h4>
-          <span class="work-tag">Logística · Transporte de carga</span>
-        </div>
-      </a>
+        <article class="work-card v-split">
+          <div class="work-head">
+            <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
+            <span class="work-num">06</span>
+          </div>
+          <div class="work-body">
+            <h4>Grupo Andes Consultores</h4>
+            <span class="work-tag">B2B · Estrategia</span>
+          </div>
+        </article>
 
-      <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-        <div class="work-frame">
-          <iframe src="vitrina/promowash.html" title="" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-ext">Ver demo <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="work-body">
-          <h4>Promo Wash</h4>
-          <span class="work-tag">Detailing · Servicios automotrices</span>
-        </div>
-      </a>
-
-      <article class="work-card v-shadow" aria-hidden="true">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-num">03</span>
-        </div>
-        <div class="work-body">
-          <h4>Vásquez &amp; Asociados</h4>
-          <span class="work-tag">Estudio Jurídico</span>
-        </div>
-        <div class="work-overlay"></div>
-      </article>
-
-      <article class="work-card v-cream" aria-hidden="true">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
-          <span class="work-num">04</span>
-        </div>
-        <div class="work-body">
-          <h4>Atelier 21</h4>
-          <span class="work-tag">E-commerce · Lifestyle</span>
-        </div>
-      </article>
-
-      <article class="work-card v-grid" aria-hidden="true">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
-          <span class="work-num">05</span>
-        </div>
-        <div class="work-body">
-          <h4>NovaCoin Exchange</h4>
-          <span class="work-tag">Web3 · DEX</span>
-        </div>
-        <div class="work-overlay"></div>
-      </article>
-
-      <article class="work-card v-split" aria-hidden="true">
-        <div class="work-head">
-          <img src="Artemis-Logo-2048-BlackTransparent.png" alt="" class="work-logo">
-          <span class="work-num">06</span>
-        </div>
-        <div class="work-body">
-          <h4>Grupo Andes Consultores</h4>
-          <span class="work-tag">B2B · Estrategia</span>
-        </div>
-      </article>
-
+      </div>
     </div>
   </div>
 </section>
@@ -955,6 +922,38 @@
       el.addEventListener('mouseenter', () => { dot.style.width = '32px'; dot.style.height = '32px'; });
       el.addEventListener('mouseleave', () => { dot.style.width = '14px'; dot.style.height = '14px'; });
     });
+  })();
+
+  /* ── 4. Vitrina — navegación con flechas + auto-disable en extremos ── */
+  (() => {
+    const scroller = document.querySelector('.vitrina-scroller');
+    const track    = document.querySelector('.vitrina-track');
+    const prevBtn  = document.querySelector('.vitrina-nav-prev');
+    const nextBtn  = document.querySelector('.vitrina-nav-next');
+    if (!scroller || !track || !prevBtn || !nextBtn) return;
+
+    const firstCard = track.querySelector('.work-card');
+    if (!firstCard) return;
+
+    function stepBy(direction){
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      // 18px = margin-right entre cards (ver .work-card CSS)
+      scroller.scrollBy({ left: direction * (cardWidth + 18), behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', () => stepBy(-1));
+    nextBtn.addEventListener('click', () => stepBy(1));
+
+    // Habilitar/deshabilitar flechas según posición del scroll
+    function updateNavState(){
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      prevBtn.disabled = scroller.scrollLeft <= 4;
+      nextBtn.disabled = scroller.scrollLeft >= maxScroll - 4;
+    }
+    scroller.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
+    // Estado inicial (con timeout para esperar layout)
+    setTimeout(updateNavState, 100);
   })();
 </script>
 

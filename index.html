@@ -4,11 +4,9 @@
 <!--
   ARTEMIS DIGITAL DESIGN · CHECKLIST PRE-PUBLICACIÓN
   ────────────────────────────────────────────────
-  1. Reemplaza <NUMERO_WHATSAPP> en el <script> al final del archivo.
-     Usa formato internacional SIN '+', SIN espacios, SIN guiones.
-     Ejemplo Chile: '56912345678'.   (Busca "WA_NUMBER" — aparece 1 vez.)
+  1. ✓ Número de WhatsApp configurado (WA_NUMBER en el <script> final).
   2. (Opcional) Ajusta og:url y canonical cuando tengas dominio.
-  3. (Opcional) Comprimir logo.png — pesa ~1.4MB. Recomendado: TinyPNG → ~150KB.
+  3. (Opcional) Comprimir los PNG del logo (~1-2MB) con TinyPNG para mejorar la carga.
 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -27,8 +25,8 @@
 <meta name="twitter:description" content="Diseño sofisticado. Resultados tangibles.">
 <meta name="twitter:image" content="Artemis-Logo-2048-Black.png">
 
-<link rel="icon" type="image/png" href="Artemis-Logo-2048-Black.png">
-<link rel="apple-touch-icon" href="Artemis-Logo-2048-Black.png">
+<link rel="icon" type="image/png" href="Artemis-Logo-2048-White.png">
+<link rel="apple-touch-icon" href="Artemis-Logo-2048-White.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -396,9 +394,11 @@
   }
   .work-frame iframe{
     position:absolute; top:0; left:0;
-    width:400%; height:400%;
+    /* Fixed px render size (always resolves, unlike % heights) scaled down
+       to fit the card — bulletproof thumbnail rendering. */
+    width:1280px; height:960px;
     border:0;
-    transform:scale(.25);
+    transform:scale(.34);
     transform-origin:top left;
     pointer-events:none;
     background:#0A0A0A;
@@ -449,8 +449,7 @@
     background:var(--silver); color:var(--ink); border-color:var(--silver);
   }
   @media (prefers-reduced-motion:reduce){
-    .work-frame iframe{ display:none; }
-    .work-card-live{ background:linear-gradient(135deg, #1A1A1A, #0A0A0A); }
+    .work-card-live{ background:#0A0A0A; }
   }
 
   /* ── Contact ───────────────────────────────────────── */
@@ -588,7 +587,7 @@
       <a href="#vitrina">Vitrina</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a href="#contacto" class="btn btn-silver nav-cta">Hablemos</a>
+    <a href="#contacto" class="btn btn-silver nav-cta">Contactar</a>
   </div>
 </header>
 
@@ -683,7 +682,7 @@
       <!-- Set 1 (6 cards) -->
       <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-label="Abrir landing de GETRAC en una pestaña nueva">
         <div class="work-frame">
-          <iframe src="vitrina/getrac/index.html" title="GETRAC Logística — preview" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+          <iframe src="vitrina/getrac/index.html" title="GETRAC Logística — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         <div class="work-head">
           <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
@@ -697,7 +696,7 @@
 
       <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-label="Abrir landing de Promo Wash en una pestaña nueva">
         <div class="work-frame">
-          <iframe src="vitrina/promowash.html" title="Promo Wash — preview" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+          <iframe src="vitrina/promowash.html" title="Promo Wash — preview" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         <div class="work-head">
           <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
@@ -758,7 +757,7 @@
       <!-- Set 2 (duplicate for seamless loop) -->
       <a class="work-card work-card-live" href="vitrina/getrac/index.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
         <div class="work-frame">
-          <iframe src="vitrina/getrac/index.html" title="" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+          <iframe src="vitrina/getrac/index.html" title="" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         <div class="work-head">
           <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
@@ -772,7 +771,7 @@
 
       <a class="work-card work-card-live" href="vitrina/promowash.html" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
         <div class="work-frame">
-          <iframe src="vitrina/promowash.html" title="" loading="lazy" tabindex="-1" aria-hidden="true" sandbox="allow-scripts allow-same-origin"></iframe>
+          <iframe src="vitrina/promowash.html" title="" tabindex="-1" aria-hidden="true" scrolling="no" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         <div class="work-head">
           <img src="Artemis-Logo-2048-White.png" alt="" class="work-logo">
@@ -867,7 +866,7 @@
         </select>
       </div>
       <div class="form-foot">
-        <button type="submit" class="btn btn-silver">Enviar a WhatsApp</button>
+        <button type="submit" class="btn btn-silver">Contactar</button>
         <p class="form-help">Te redirige a WhatsApp con tu mensaje pre-armado.</p>
       </div>
     </form>
@@ -908,7 +907,7 @@
 
   /* ── 2. Form → WhatsApp ─────────────────────────────── */
   (() => {
-    const WA_NUMBER = '<NUMERO_WHATSAPP>'; // ← REEMPLAZAR. Ej: '56912345678' (Chile, sin '+', sin espacios).
+    const WA_NUMBER = '56978610060'; // WhatsApp Artemis Digital Design (Chile)
     const form = document.getElementById('lead-form');
     if (!form) return;
 
